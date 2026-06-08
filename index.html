@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leads Estética Curitiba — Sem Site</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:#0a0e1a;color:#e7eaf2;line-height:1.5;min-height:100vh}
+  .header{background:linear-gradient(135deg,#0d1424,#131c33);border-bottom:1px solid #1f2a44;padding:24px 20px;position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+  .hi{max-width:1280px;margin:0 auto}
+  h1{font-size:22px;font-weight:700;margin-bottom:4px}
+  h1 .accent{color:#25d366}
+  .sub{color:#8a93a8;font-size:13px;margin-bottom:16px}
+  .stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+  .stat{background:#131c33;padding:10px 14px;border-radius:8px;border:1px solid #1f2a44;display:flex;flex-direction:column;min-width:110px}
+  .stat-label{font-size:11px;color:#8a93a8;text-transform:uppercase;letter-spacing:.5px}
+  .stat-value{font-size:18px;font-weight:700;margin-top:2px}
+  .red{color:#ff6b6b}.green{color:#25d366}.blue{color:#74c0fc}.orange{color:#ffa94d}
+  .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .fb{background:#131c33;color:#e7eaf2;border:1px solid #1f2a44;padding:7px 12px;border-radius:6px;cursor:pointer;font-size:12px;transition:all .15s}
+  .fb:hover{background:#1c2742}
+  .fb.active{background:#2563eb;border-color:#2563eb}
+  .search{background:#131c33;border:1px solid #1f2a44;color:#e7eaf2;padding:7px 12px;border-radius:6px;font-size:13px;flex:1;min-width:180px}
+  .eb{background:#1f3a2e;color:#25d366;border:1px solid #25d366;padding:7px 12px;border-radius:6px;cursor:pointer;font-size:12px}
+  .eb:hover{background:#25d366;color:#0a0e1a}
+  .container{max-width:1280px;margin:24px auto;padding:0 20px}
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(370px,1fr))}
+  .card{background:#131c33;border:1px solid #ff6b6b33;border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:11px;transition:all .2s;position:relative}
+  .card:hover{border-color:#ff6b6b;transform:translateY(-2px)}
+  .card.contacted{opacity:.5}
+  .card.contacted::after{content:"Contatado";position:absolute;top:12px;right:12px;background:#25d366;color:#0a0e1a;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px}
+  .ct{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+  .cn{font-size:14px;font-weight:600;line-height:1.3}
+  .badge-sem{font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;background:#ff6b6b;color:#1a0606;flex-shrink:0}
+  .rv-badge{font-size:10px;padding:2px 8px;border-radius:3px;font-weight:600;align-self:flex-start}
+  .rv-high{background:#1f3a2e;color:#51cf66}
+  .rv-mid{background:#1f2a3a;color:#74c0fc}
+  .rv-low{background:#2a1f0a;color:#ffa94d}
+  .meta{display:flex;gap:10px;font-size:12px;color:#8a93a8;flex-wrap:wrap}
+  .star{color:#ffd43b}
+  .msg-preview{background:#1a2235;border-left:3px solid #25d366;padding:10px 12px;border-radius:4px;font-size:12.5px;color:#c8d8f0;line-height:1.6;font-style:italic}
+  .msg-preview strong{color:#74c0fc;display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:.5px;font-style:normal}
+  .actions{display:flex;gap:8px;margin-top:4px}
+  .btn{flex:1;padding:10px;border-radius:6px;border:none;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:all .15s}
+  .bwa{background:#25d366;color:#0a0e1a;text-decoration:none}
+  .bwa:hover{background:#20bd58}
+  .bcp{background:#1f2a44;color:#e7eaf2}
+  .bcp:hover{background:#2c3a5e}
+  .bdn{background:transparent;color:#8a93a8;border:1px solid #1f2a44;padding:8px 12px}
+  .bdn:hover{color:#25d366;border-color:#25d366}
+  .bdn.active{background:#1f3a2e;color:#25d366;border-color:#25d366}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#25d366;color:#0a0e1a;padding:12px 24px;border-radius:8px;font-weight:600;font-size:14px;opacity:0;transition:opacity .2s;z-index:100;pointer-events:none}
+  .toast.show{opacity:1}
+  .empty{text-align:center;padding:60px 20px;color:#6b7693;grid-column:1/-1}
+  .footer{text-align:center;padding:30px 20px;color:#6b7693;font-size:12px}
+  @media(max-width:600px){.grid{grid-template-columns:1fr}h1{font-size:18px}}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="hi">
+    <h1>Leads Estética Curitiba <span class="accent">— Sem Site</span></h1>
+    <p class="sub">39 clínicas de harmonização e estética em Curitiba, somente sem site, celular DDD 41, nota 4.7+</p>
+    <div class="stats">
+      <div class="stat"><span class="stat-label">Total</span><span class="stat-value" id="s-total">39</span></div>
+      <div class="stat"><span class="stat-label">50+ Avaliações</span><span class="stat-value green" id="s-high">0</span></div>
+      <div class="stat"><span class="stat-label">20-49 Avaliações</span><span class="stat-value blue" id="s-mid">0</span></div>
+      <div class="stat"><span class="stat-label">Contatados</span><span class="stat-value orange" id="s-done">0</span></div>
+    </div>
+    <div class="controls">
+      <button class="fb active" data-f="all">Todos</button>
+      <button class="fb" data-f="high">🔥 50+ Avaliações</button>
+      <button class="fb" data-f="mid">20-49 Avaliações</button>
+      <button class="fb" data-f="pending">Não contatados</button>
+      <input class="search" id="search" placeholder="Buscar nome ou bairro...">
+      <button class="eb" id="exportBtn">Baixar CSV</button>
+    </div>
+  </div>
+</header>
+<div class="container">
+  <div class="grid" id="grid"></div>
+  <div class="footer">Google Maps via Apify, Maio/2026 — Curitiba PR — Somente SEM SITE — Celular DDD 41 — Harmonização e Estética Avançada</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const LEADS = [
+  {n:"Dra. Deyse Lisowski",d:"Deyse",rv:259,r:5,b:"Batel",w:"5541998876585",wf:"+55 41 998876-585"},
+  {n:"Dra. Amanda Bialli Estética Avançada",d:"Amanda",rv:74,r:5,b:"Bigorrilho",w:"5541991097157",wf:"+55 41 991097-157"},
+  {n:"Concept HOF",d:"",rv:72,r:5,b:"Vila Izabel",w:"5541995738817",wf:"+55 41 995738-817"},
+  {n:"Dr. Marcioh Melo",d:"Marcioh",rv:51,r:4.8,b:"Batel",w:"5541992575352",wf:"+55 41 992575-352"},
+  {n:"Dra Caroline Zulke",d:"Caroline",rv:51,r:5,b:"Batel",w:"5541996115083",wf:"+55 41 996115-083"},
+  {n:"Dra. Juliana Coradin",d:"Juliana",rv:51,r:4.9,b:"Batel",w:"5541995361311",wf:"+55 41 995361-311"},
+  {n:"Clínica de Harmonização Orofacial Fratelli D'Elia",d:"",rv:45,r:5,b:"Vila Izabel",w:"5541998463686",wf:"+55 41 998463-686"},
+  {n:"Dra Graziely Oliveira",d:"Graziely",rv:45,r:5,b:"Bigorrilho",w:"5541985001508",wf:"+55 41 985001-508"},
+  {n:"Dra. Simone Malquevicz",d:"Simone",rv:41,r:5,b:"Batel",w:"5541984518046",wf:"+55 41 984518-046"},
+  {n:"Dra Letícia Mayer",d:"Letícia",rv:39,r:5,b:"Batel",w:"5541992858887",wf:"+55 41 992858-887"},
+  {n:"Harmonize Smile - Dra Bruna Girotto",d:"Bruna",rv:38,r:5,b:"Bigorrilho",w:"5541999980975",wf:"+55 41 999980-975"},
+  {n:"Dra. Marcia Kochinski",d:"Marcia",rv:38,r:4.9,b:"Batel",w:"5541991925186",wf:"+55 41 991925-186"},
+  {n:"Dra. Amanda Kloster Wagner",d:"Amanda",rv:38,r:4.9,b:"Batel",w:"5541996995720",wf:"+55 41 996995-720"},
+  {n:"Dra. Julia Maestrelli",d:"Julia",rv:37,r:5,b:"Água Verde",w:"5541992226455",wf:"+55 41 992226-455"},
+  {n:"Dra. Yohana Castro",d:"Yohana",rv:35,r:4.8,b:"Vila Izabel",w:"5541997017848",wf:"+55 41 997017-848"},
+  {n:"Dra. Leticia Becker",d:"Leticia",rv:31,r:5,b:"Água Verde",w:"5541996969386",wf:"+55 41 996969-386"},
+  {n:"Dra. Thaís Branco",d:"Thaís",rv:26,r:5,b:"Bigorrilho",w:"5541988502242",wf:"+55 41 988502-242"},
+  {n:"Dra Damaris Almeida",d:"Damaris",rv:25,r:5,b:"Vila Izabel",w:"5541991226707",wf:"+55 41 991226-707"},
+  {n:"Dra. Patrícia Lima",d:"Patrícia",rv:24,r:5,b:"Batel",w:"5541995550955",wf:"+55 41 995550-955"},
+  {n:"Dra. Karla Manes Harmonização Facial",d:"Karla",rv:23,r:5,b:"Centro",w:"5541987830413",wf:"+55 41 987830-413"},
+  {n:"Clinica Dra. Andreza Hultmann",d:"Andreza",rv:22,r:5,b:"Bigorrilho",w:"5541988091634",wf:"+55 41 988091-634"},
+  {n:"Dra Fernanda Costa de Aguiar",d:"Fernanda",rv:20,r:4.8,b:"Batel",w:"5541998373355",wf:"+55 41 998373-355"},
+  {n:"Dra. Daniele Pacheco",d:"Daniele",rv:17,r:4.8,b:"Bigorrilho",w:"5541999120163",wf:"+55 41 999120-163"},
+  {n:"Clínica Paola Smaniotto",d:"",rv:16,r:5,b:"Água Verde",w:"5541997165027",wf:"+55 41 997165-027"},
+  {n:"Clínica Engeroff",d:"",rv:16,r:5,b:"Bigorrilho",w:"5541991859800",wf:"+55 41 991859-800"},
+  {n:"Dra. Julia Troib Harmonização Facial",d:"Julia",rv:16,r:5,b:"Batel",w:"5541998409200",wf:"+55 41 998409-200"},
+  {n:"Dra. Fernanda Nogarolli Biomédica Esteta",d:"Fernanda",rv:14,r:5,b:"Mercês",w:"5541999818414",wf:"+55 41 999818-414"},
+  {n:"Dra Ana Flávia Dias",d:"Ana",rv:13,r:5,b:"Batel",w:"5541996741528",wf:"+55 41 996741-528"},
+  {n:"Dra. Vitória Luiza Biomédica Esteta",d:"Vitória",rv:13,r:5,b:"São Francisco",w:"5541987759071",wf:"+55 41 987759-071"},
+  {n:"Dra. Valeria Vaselechen",d:"Valeria",rv:12,r:5,b:"Água Verde",w:"5541996255262",wf:"+55 41 996255-262"},
+  {n:"Amanda Limberg - Biomedicina Estética",d:"",rv:12,r:5,b:"Batel",w:"5541984142081",wf:"+55 41 984142-081"},
+  {n:"Dra Heloiza Berckenbrock",d:"Heloiza",rv:12,r:5,b:"Batel",w:"5541999899983",wf:"+55 41 999899-983"},
+  {n:"S.A ODONTOLOGIA CWB",d:"",rv:11,r:5,b:"Água Verde",w:"5541995656091",wf:"+55 41 995656-091"},
+  {n:"Dra Mariana Lara",d:"Mariana",rv:5,r:5,b:"Batel",w:"5541985266110",wf:"+55 41 985266-110"},
+  {n:"Biomédica esteta Yasmim Silva",d:"",rv:4,r:5,b:"Rebouças",w:"5541996693550",wf:"+55 41 996693-550"},
+  {n:"Dra Keyttymarry Biomédica",d:"Keyttymarry",rv:3,r:5,b:"Batel",w:"5541992138669",wf:"+55 41 992138-669"},
+  {n:"Dra Miriam Hamdar",d:"Miriam",rv:3,r:5,b:"Bigorrilho",w:"5541997733922",wf:"+55 41 997733-922"},
+  {n:"Dra. Fernanda Suaretz",d:"Fernanda",rv:1,r:5,b:"Batel",w:"5541997850573",wf:"+55 41 997850-573"},
+  {n:"Estética Avançada Dra Dayana Rodrigues",d:"Dayana",rv:1,r:5,b:"Bigorrilho",w:"5541987501008",wf:"+55 41 987501-008"}
+];
+
+function genMsg(L) {
+  const oi = L.d ? `Oi, ${L.d}!` : `Oi, tudo bem?`;
+  return `${oi} Tava pesquisando clínicas de harmonização aqui em ${L.b} e acabei caindo no seu perfil. Reparei numa coisa que provavelmente tá te fazendo perder agendamento toda semana. Te mando o que achei?`;
+}
+
+function rvClass(rv){ return rv>=50?'rv-high':rv>=20?'rv-mid':'rv-low'; }
+function rvLabel(rv){ return rv>=50?`🔥 ${rv} avaliações`:rv>=20?`⭐ ${rv} avaliações`:rv>0?`${rv} avaliações`:'Nova'; }
+
+const contacted=new Set();
+let af="all",sq="";
+
+function render(){
+  const grid=document.getElementById("grid");
+  grid.innerHTML="";
+  const q=sq.toLowerCase();
+  const fil=LEADS.filter(L=>{
+    if(af==="high"&&L.rv<50) return false;
+    if(af==="mid"&&(L.rv<20||L.rv>=50)) return false;
+    if(af==="pending"&&contacted.has(L.w)) return false;
+    if(q&&!(L.n.toLowerCase().includes(q)||L.b.toLowerCase().includes(q))) return false;
+    return true;
+  });
+  if(!fil.length){grid.innerHTML='<div class="empty">Nenhum lead encontrado.</div>';updateStats();return;}
+  fil.forEach(L=>{
+    const msg=genMsg(L),isDone=contacted.has(L.w);
+    const c=document.createElement("div");
+    c.className="card"+(isDone?" contacted":"");
+    c.innerHTML=`
+      <div class="ct">
+        <div class="cn">${L.n}</div>
+        <span class="badge-sem">❌ SEM SITE</span>
+      </div>
+      <span class="rv-badge ${rvClass(L.rv)}">${rvLabel(L.rv)}</span>
+      <div class="meta"><span><span class="star">★</span> ${L.r}</span><span>📍 ${L.b}</span></div>
+      <div class="msg-preview"><strong>Mensagem</strong>${msg}</div>
+      <div class="actions">
+        <a class="btn bwa" href="https://wa.me/${L.w}?text=${encodeURIComponent(msg)}" target="_blank" data-w="${L.w}">💬 ${L.wf}</a>
+        <button class="btn bcp" data-msg="${msg.replace(/"/g,'&quot;')}">📋 Copiar</button>
+      </div>
+      <button class="btn bdn ${isDone?'active':''}" data-w="${L.w}">${isDone?'✓ Contatado':'Marcar como contatado'}</button>`;
+    grid.appendChild(c);
+  });
+  updateStats();
+}
+
+function updateStats(){
+  document.getElementById("s-total").textContent=LEADS.length;
+  document.getElementById("s-high").textContent=LEADS.filter(l=>l.rv>=50).length;
+  document.getElementById("s-mid").textContent=LEADS.filter(l=>l.rv>=20&&l.rv<50).length;
+  document.getElementById("s-done").textContent=contacted.size;
+}
+
+function toast(t){const e=document.getElementById("toast");e.textContent=t;e.classList.add("show");setTimeout(()=>e.classList.remove("show"),1800);}
+
+document.addEventListener("click",e=>{
+  const wa=e.target.closest(".bwa");
+  if(wa){contacted.add(wa.dataset.w);setTimeout(()=>render(),200);return;}
+  const cp=e.target.closest(".bcp");
+  if(cp){navigator.clipboard.writeText(cp.dataset.msg).then(()=>toast("Copiado!"));return;}
+  const dn=e.target.closest(".bdn");
+  if(dn){const w=dn.dataset.w;contacted.has(w)?contacted.delete(w):contacted.add(w);render();return;}
+  const fb=e.target.closest(".fb");
+  if(fb){document.querySelectorAll(".fb").forEach(b=>b.classList.remove("active"));fb.classList.add("active");af=fb.dataset.f;render();return;}
+  if(e.target.id==="exportBtn"){
+    const h=["clinica","nome","bairro","whatsapp","nota","avaliacoes","mensagem"];
+    const r=LEADS.map(L=>[L.n,L.d,L.b,L.wf,L.r,L.rv,genMsg(L)]);
+    const csv=[h,...r].map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(",")).join("\n");
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8"}));
+    a.download="leads_estetica_curitiba.csv";a.click();
+    toast("CSV baixado!");
+  }
+});
+document.getElementById("search").addEventListener("input",e=>{sq=e.target.value;render();});
+render();
+</script>
+</body>
+</html>
